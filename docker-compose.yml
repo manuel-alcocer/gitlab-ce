@@ -7,12 +7,11 @@ services:
     hostname: "${GITLAB_CE_HOSTNAME}"
     environment:
       GITLAB_OMNIBUS_CONFIG: |
-        external_url "https://${GITLAB_CE_HOSTNAME}"
+        external_url "http://${GITLAB_CE_HOSTNAME}"
         # Add any other gitlab.rb configuration here, each on its own line
     volumes:
-      - '$GITLAB_HOME/config:/etc/gitlab'
-      - '$GITLAB_HOME/logs:/var/log/gitlab'
-      - '$GITLAB_HOME/data:/var/opt/gitlab'
+      - etc:/etc/gitlab
+      - data:/var/opt/gitlab
     shm_size: '256m'
     labels:
       - traefik.enable=true
@@ -21,6 +20,10 @@ services:
       - traefik.http.routers.gitlab.service=gitlab
       - traefik.http.routers.gitlab.tls.certresolver=leresolver
       - traefik.http.services.gitlab.loadbalancer.server.port=443
+
+volumes:
+  etc:
+  data: 
 
 networks:
   default:
