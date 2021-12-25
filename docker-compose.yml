@@ -5,9 +5,6 @@ services:
     image: 'gitlab/gitlab-ce:latest'
     restart: unless-stopped
     hostname: "${GITLAB_CE_HOSTNAME}"
-    expose:
-      - "443"
-      - "22"
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         external_url "https://${GITLAB_CE_HOSTNAME}"
@@ -25,3 +22,7 @@ services:
       - traefik.http.routers.gitlab.tls.certresolver=leresolver
       - traefik.http.services.gitlab.loadbalancer.server.port=443
 
+networks:
+  default:
+    external: true
+    name: 	portainer-stack_default
