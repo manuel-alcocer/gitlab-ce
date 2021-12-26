@@ -5,6 +5,7 @@ services:
     image: 'gitlab/gitlab-ce:latest'
     restart: unless-stopped
     hostname: "${GITLAB_CE_HOSTNAME}"
+    container_name: gitlab
     environment:
       GITLAB_OMNIBUS_CONFIG: |
         external_url "http://${GITLAB_CE_HOSTNAME}"
