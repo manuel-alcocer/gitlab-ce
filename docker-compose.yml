@@ -23,7 +23,7 @@ services:
       - traefik.http.services.gitlab.loadbalancer.server.port=80
       - traefik.tcp.routers.tcpgitlab.rule=Host(`${GITLAB_CE_HOSTNAME}`)
       - traefik.tcp.routers.tcpgitlab.entrypoints=ssh
-      - traefik.tcp.routers.tcpgitlab.service=gitlab
+      - traefik.tcp.routers.tcpgitlab.service=tcpgitlab
       - traefik.tcp.services.tcpgitlab.loadbalancer.server.port=22
 
 volumes:
