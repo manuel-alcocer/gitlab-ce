@@ -29,8 +29,3 @@ services:
 volumes:
   etc:
   data: 
-
-networks:
-  default:
-    external: true
-    name: $GITLAB_CE_NETWORK
