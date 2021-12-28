@@ -22,6 +22,11 @@ services:
       - traefik.tcp.routers.tcpgitlab.service=tcpgitlab
       - traefik.tcp.services.tcpgitlab.loadbalancer.server.port=22
 
+networks:
+  default:
+    external: true
+    name: main-network
+   
 volumes:
   etc:
   data: 
