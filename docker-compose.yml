@@ -4,7 +4,6 @@ services:
   gitlab:
     image: 'gitlab/gitlab-ce:latest'
     restart: unless-stopped
-    hostname: "${GITLAB_CE_HOSTNAME}"
     container_name: gitlab
     volumes:
       - etc:/etc/gitlab
